@@ -22,15 +22,13 @@ struct BigInt {
 
     BigInt &operator=(const BigInt &x) {
         v.resize(x.v.size());
-        memcpy(const_cast<char *>(v.data()), x.v.data(), 
-x.v.size() * sizeof(char));
+        memcpy(const_cast<char *>(v.data()), x.v.data(), x.v.size() * sizeof(char));
         return *this;
     }
 };
 
 std::ostream &operator<<(std::ostream &out, const BigInt &x) {
-    for (int i = x.v.size() - 1; i >= 0; i--) out << (char)(x.v[i] 
-+ '0');
+    for (int i = x.v.size() - 1; i >= 0; i--) out << (char)(x.v[i] + '0');
     return out;
 }
 
@@ -38,8 +36,7 @@ BigInt operator+(const BigInt &a, const BigInt &b) {
     BigInt result;
     result.v.clear();
     bool flag = false;
-    for (int i = 0; i < (int)std::max(a.v.size(), b.v.size()); 
-i++) {
+    for (int i = 0; i < (int)std::max(a.v.size(), b.v.size()); i++) {
         int tmp = 0;
         if (i < (int)a.v.size()) tmp += a.v[i];
         if (i < (int)b.v.size()) tmp += b.v[i];
