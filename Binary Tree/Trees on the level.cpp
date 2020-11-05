@@ -7,14 +7,14 @@ using namespace std;
 
 const int maxn = 256 + 10;
 
-struct Node{
+struct Node{ //树的结点定义
   bool have_value;
   int v;
   Node* left, *right;
   Node():have_value(false),left(NULL),right(NULL){}
 };
 
-Node* root;
+Node* root; //根结点
 
 Node* newnode() { return new Node(); }
 
